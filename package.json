@@ -15,6 +15,6 @@
     "parcel": "^2.9.3"
   },
   "dependencies": {
-    "fractional": "^1.0.0"
+    "fracty": "^1.0.11"
   }
 }

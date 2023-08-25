@@ -5,7 +5,7 @@ class ResultsView extends View {
   _parentElement = document.querySelector('.results');
   _errorMessage =
     'No recipes found for your query. Please search for a different ingredient.';
-  _message = '';
+  _message = 'Welcome to Forkify!';
 
   //
   _generateMarkup() {

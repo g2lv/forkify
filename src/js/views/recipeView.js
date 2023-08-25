@@ -1,7 +1,6 @@
 import View from './view.js';
-
 import icons from 'url:../../img/icons.svg'; // import icons for Parcel packager
-// import { Fraction } from 'fractional';
+var fracty = require('fracty');
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
@@ -130,8 +129,7 @@ class RecipeView extends View {
         <use href="${icons}#icon-check"></use>
       </svg>
       <div class="recipe__quantity">${
-        ing.quantity ? ing.quantity : ''
-        // ing.quantity ? new Fraction(ing.quantity.toFixed(4)).toString() : '' // toFixed is needed to avoid a bug in the Fractional library
+        ing.quantity ? fracty(ing.quantity) : ''
       }</div>
       <div class="recipe__description">
         <span class="recipe__unit">${ing.unit}</span>

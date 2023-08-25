@@ -9,12 +9,6 @@ import { MODAL_CLOSE_SEC } from './config.js';
 
 // https://forkify-api.herokuapp.com/v2
 
-///////////////////////////////////////
-
-// if (module.hot) {
-//   module.hot.accept();
-// }
-
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -44,8 +38,6 @@ const controlSearchResults = async function () {
     // get search query
     const query = searchView.getQuery();
     if (!query) return;
-
-    console.log(query);
 
     // load search results
     await model.loadSearchResults(query);
@@ -119,9 +111,9 @@ const controlAddRecipe = async function (newRecipe) {
     }, MODAL_CLOSE_SEC * 1000);
 
     // replace success message with input form
-    setTimeout(function () {
-      addRecipeView.render(true);
-    }, MODAL_CLOSE_SEC * 1100); // set this timeout for 10% later
+    // setTimeout(function () {
+    //   addRecipeView.render(true);
+    // }, MODAL_CLOSE_SEC * 1100); // set this timeout for 10% later
   } catch (err) {
     addRecipeView.renderError(err);
   }
@@ -129,14 +121,14 @@ const controlAddRecipe = async function (newRecipe) {
 
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
-  recipeView.renderMessage();
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerBookmark(controlToggleBookmark);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
-  console.log('Welcome to Forkify');
+  recipeView.renderMessage();
+  resultsView.renderMessage();
 };
 
 init();
